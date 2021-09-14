@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="pt-br" ng-app="gambs">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carousel Template · Bootstrap v5.0</title>
+  <script src="angular/angular.min.js"></script>
+  <script src="angular/app.js"></script>
+
+  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body ng-controller="controller">
+
+  <header>
+    <div class="px-3 py-2 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"
+            style="font-family: 'Lato', sans-serif; font-weight: 400; font-size: 20px;">
+            BWOD Soluções
+          </a>
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <li>
+              <a href="/" class="nav-link text-white" style="margin-top: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
+                  <path
+                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#modalContato"
+                style="margin-top: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                </svg>
+                Contato
+              </a>
+
+            </li>
+            <li>
+              <a href="#descsobre" class="nav-link text-white" style="margin-top: 10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
+                  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                  <path fill-rule="evenodd"
+                    d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                  <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                </svg>
+                Sobre nós
+              </a>
+            </li>
+            <li ng-if="orcamentos.length > 0">
+              <a class="nav-link text-white" style="margin-top: 10px" data-bs-toggle="modal"
+                data-bs-target="#modalOrcamentos">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
+                  <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                  <path
+                    d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
+                </svg>
+                <div id="littleball" class="smallball"></div>
+                Orçamentos
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <image class="d-block w-100" href="images/bannerweb.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" />
+          </svg>
+
+          <div class="container">
+            <div class="carousel-caption text-start">
+              <h1>Seu comércio entrando na era digital!</h1>
+              <p>Conheça nossa plataforma web para seu negócio</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <image class="d-block w-100" href="images/bannermobile.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" />
+          </svg>
+
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Solução web e mobile!</h1>
+              <p>Plataforma totalmente integrada para maior rentabilidade e controle.</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <image class="d-block w-100" href="images/bannerabout.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" /></svg>
+
+          <div class="container">
+            <div class="carousel-caption text-end">
+              <h1>Conheça já nossos planos!</h1>
+              <p>Explore o potencial da sua empresa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Proximo</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+    </div>
+
+
+    <div class="container marketing">
+      <div class="row">
+        <div class="col-lg-4">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <image class="d-block w-100" href="images/iconweb.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" />
+          </svg>
+
+          <h2>Plataforma Web</h2>
+          <p>Plataforma 100% web para turbinar suas vendas.</p>
+          <p><a class="btn btn-secondary" style="background-color: black;" href="#descweb">Saiba mais &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <image class="d-block w-100" href="images/iconmobile.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" />
+          </svg>
+          </svg>
+
+          <h2>Aplicativos</h2>
+          <p>Aplicativos personalizados para seu negócio.</p>
+          <p><a class="btn btn-secondary" style="background-color: black;" href="#descmobile">Saiba mais &raquo;</a></p>
+        </div>
+        <div class="col-lg-4">
+          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+            role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <image class="d-block w-100" href="images/iconcontrato.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" />
+          </svg>
+
+          <h2>Nossos Planos</h2>
+          <p>Escolha o plano ideal para seu negócio.</p>
+          <p><a class="btn btn-secondary" style="background-color: black;" href="#desccontrato">Saiba mais &raquo;</a>
+          </p>
+        </div>
+      </div>
+
+
+      <hr class="featurette-divider" id="descweb">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Plataforma Web Integrada</h2>
+          <p class="lead">🗸 100% Web</p>
+          <p class="lead">🗸 Totalmente Personalizavel</p>
+          <p class="lead">🗸 Aumento nas vendas</p>
+          <p class="lead">🗸 Controle de estoque e financeiro</p>
+          <p class="lead">🗸 Facil utilização</p>
+          <p class="lead">🗸 Integração com iFood</p>
+          <p><a class="btn btn-secondary" style="background-color: black;" href="#" data-bs-toggle="modal"
+              data-bs-target="#formPlano">Contrate &raquo;</a></p>
+        </div>
+        <div class="col-md-5">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+            height="500" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice"
+            focusable="false">
+            <image class="d-block w-100" href="images/web.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" />
+          </svg>
+
+        </div>
+      </div>
+
+      <hr class="featurette-divider" id="descmobile">
+
+      <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading">Aplicativos Personalizados</span></h2>
+          <p class="lead">Solicite agora um orçamento para ter um aplicativo totalmente integrado com seu BWOD Web.</p>
+          <p><a class="btn btn-secondary" style="background-color: black;" href="">Em breve &raquo;</a></p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+            height="500" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice"
+            focusable="false">
+            <image class="d-block w-100" href="images/mobile.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" /></svg>
+
+        </div>
+      </div>
+
+      <hr class="featurette-divider" id="descsobre">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">A BWOD Soluções</h2>
+          <p class="lead">Criada em setembro de 2021, a BWOD Soluções é uma empresa com uma missão de facilitar o acesso dos pequenos comerciantes às vantagens da era digital.</p>
+        </div>
+        <div class="col-md-5">
+          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+            height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+            preserveAspectRatio="xMidYMid slice" focusable="false">
+            <image class="d-block w-100" href="images/contrato.png" height="100%" width="100%"
+              preserveAspectRatio="xMidYMid slice" /></svg>
+
+          </svg>
+
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+
+    </div>
+
+    <div class="modal fade" id="modalContato" tabindex="-1" aria-labelledby="modalContatoLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalContatoLabel">Contato BWOD</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <a style="text-decoration: none; color: black" href="mailto:lucasghank@hotmail.com" target="_top">
+                <p class="lead" style="font-size: 15px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                  </svg> lalala@msn.com</p>
+              </a>
+            </div>
+            <div class="row">
+              <p class="lead" style="font-size: 15px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                </svg> +55 (45) 99999-9999</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" ng-click="enviarWhatsContato()" class="btn btn-outline-success">Enviar
+              WhatsApp</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="formPlano" tabindex="-1" aria-labelledby="formPlanoLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="formPlanoLabel">Solitice um Orçamento</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form novalidate>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Seu Nome</label>
+                <input type="text" ng-model="orcamento.nmCliente" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nome da sua Empresa</label>
+                <input type="text" ng-model="orcamento.nmEmpresa" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Telefone ou Email para Contato</label>
+                <input type="text" ng-model="orcamento.contato" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Mensagem</label>
+                <textarea class="form-control" ng-model="orcamento.mensagem" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" ng-click="enviarOrcamento(orcamento)"
+              data-bs-dismiss="modal">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalOrcamentos" tabindex="-1" aria-labelledby="modalOrcamentosLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalOrcamentosLabel">Orçamentos Enviados</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table table-responsive">
+              <table class="table">
+                <thead class="table-light">
+                  <th>Nome</th>
+                  <th>Nome da Empresa</th>
+                  <th>Contato</th>
+                  <th>Mensagem</th>
+                </thead>
+                <tbody ng-repeat="a in orcamentos">
+                  <td>{{a.nmCliente}}</td>
+                  <td>{{a.nmEmpresa}}</td>
+                  <td>{{a.contato}}</td>
+                  <td>{{a.mensagem}}</td>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="container">
+      <p>&copy;2021 - BWOD.</p>
+    </footer>
+  </main>
+
+
+  <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
